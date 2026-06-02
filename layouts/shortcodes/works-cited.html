@@ -10,7 +10,8 @@
 {{- $citations := slice -}}
 
 {{- $context := . }}
-{{- $onlyCited := and $context.IsNamedParams (eq ($context.Get "cited") "true") }}
+{{- $style := $context.Get "style" }}
+{{- $onlyCited := true }}
 
 {{- $citedTitles := slice -}}
 {{- if $onlyCited }}
@@ -33,8 +34,7 @@
   {{- end }}
 {{- end }}
 
-{{ $items := partial "zotero/fetch-items.html" (dict "groupId" site.Params.groupId) }}
-
+{{ $items := partial "zotero/fetch-items.html" (dict "groupId" site.Params.groupId "style" $style) }}
 {{ $filtered := partial "zotero/filter-items.html" (dict
   "items"       $items
   "params"      $context.Params
