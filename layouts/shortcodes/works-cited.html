@@ -49,7 +49,7 @@
 
 {{ $collections := partial "zotero/build-collection-tree.html" site.Params.groupId }}
 
-<ul style="list-style-type: none;" class="apa-citation-list">
+<ul style="list-style-type: none;" class="hugo-citation-list">
   {{- range $citation := $citations }}
     {{- $cols := $citation.citation.collections | default (slice) }}
     {{- if eq (len $cols) 0 }}
