@@ -7,9 +7,10 @@
 {{- $meta := resources.GetRemote $metaURL | transform.Unmarshal -}}
 {{- $numPages := math.Ceil (div $meta.meta.numItems $limit) -}}
 
+{{- $style := or .style "apa" -}}
 {{- range seq 0 $numPages -}}
   {{- $start := mul . $limit -}}
-  {{- $url := printf "https://api.zotero.org/groups/%d/items?start=%d&limit=%d&format=json" $groupId $start $limit -}}
+  {{- $url := printf "https://api.zotero.org/groups/%d/items?start=%d&limit=%d&include=data,bib,citation,coins&linkwrap=1&style=%s&format=json" $groupId $start $limit $style -}}
   {{- $batch := resources.GetRemote $url | transform.Unmarshal -}}
   {{- if $batch }}
     {{- $scratch.Add "items" $batch -}}

@@ -23,16 +23,14 @@
     {{- $year = index $parts 0 }}
   {{- end }}
 {{- end }}
-
 {{- if and (not $found) (eq $entry.title $title) }}
-      {{- $found = true }}
 <span>
     {{- $authors := slice -}}
     {{- range $entry.creators }}
 
-    {{- if eq $entry.creatorType "author" }}
-    {{- if $entry.lastName }}
-    {{- $name := printf "%s" $entry.lastName}}
+    {{- if eq .creatorType "author" }}
+    {{- if .lastName }}
+    {{- $name := printf "%s" .lastName}}
     {{- $authors = $authors | append $name }}
     {{- end }}
     {{- end }}
