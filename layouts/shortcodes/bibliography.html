@@ -36,7 +36,7 @@
 {{ $collections := partial "zotero/build-collection-tree.html" site.Params.groupId }}
 
 {{if $onlyCited }}
-<ul class="hugo-citation-list">
+<ul style="list-style-type: none;" class="hugo-citation-list">
   {{ range $index, $citation := $citations }}
     <div id="ref-{{ $index }}">
     {{ partial "render/render-citation.html" $citation }}
@@ -44,7 +44,7 @@
   {{ end }}
 </ul>
 {{else}}
-<ul class="hugo-citation-list">
+<ul style="list-style-type: none;" class="hugo-citation-list">
   {{ range $citations }}
     {{ partial "render/render-citation.html" . }}
   {{ end }}
