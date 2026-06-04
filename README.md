@@ -25,6 +25,10 @@ To add a full bibliography, call the bibliography shortcode with the following:
 
 `{{<bibliography>}}`
 
+To include collections after the full bibliography, you must explicitly pass the parameter `collections`:
+
+`{{<bibliography collections=true>}}`
+
 #### Filtering
 
 You can add a parameter to limit the scope of the bibliography.

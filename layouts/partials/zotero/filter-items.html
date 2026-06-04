@@ -10,7 +10,7 @@
   {{- $include := true -}}
 
   {{- range $key, $val := $params }}
-    {{- if and (ne $key "cited") (ne $key "authorNum") (ne $key "style") }}
+    {{- if and (ne $key "cited") (ne $key "authorNum") (ne $key "style") (ne $key "collections")}}
       {{- if eq $key "keyword" }}
         {{- $flat := "" -}}
         {{- range $k, $v := $entry.data }}

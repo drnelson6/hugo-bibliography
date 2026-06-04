@@ -48,11 +48,14 @@
   {{ range $citations }}
     {{ partial "render/render-citation.html" . }}
   {{ end }}
-  {{ range $collections }}
-    {{ partial "render/render-collection.html" (dict
-      "collection" .
-      "citations" $citations
-    ) }}
+  {{- $includeCollections := and $context.IsNamedParams (eq ($context.Get "collections") "true") -}}
+  {{- if $includeCollections -}}
+    {{ range $collections }}
+      {{ partial "render/render-collection.html" (dict
+        "collection" .
+        "citations" $citations
+      ) }}
+    {{ end }}
   {{ end }}
 </ul>
 {{end}}
