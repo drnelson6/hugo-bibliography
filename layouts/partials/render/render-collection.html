@@ -1,11 +1,12 @@
 {{ $collection := .collection }}
 {{ $allCitations := .citations }}
 {{ $thisKey := $collection.key }}
+{{ warnf $thisKey }}
 {{ $singleCollection := .singleCollection }}
 
 {{ $renderCollection := false }}
 {{ range $citation := $allCitations }}
-    {{ $collectionKeys := $citation.citation.collections | default (slice) }}
+    {{ $collectionKeys := $citation.citation.data.collections | default (slice) }}
     {{ if in $collectionKeys $thisKey }}
         {{ $renderCollection = true }}
     {{ end }}
@@ -16,7 +17,7 @@
 {{ end }}
 
     {{ range $citation := $allCitations }}
-        {{ $collectionKeys := $citation.citation.collections | default (slice) }}
+        {{ $collectionKeys := $citation.citation.data.collections | default (slice) }}
         {{ if in $collectionKeys $thisKey }}
             {{ partial "render/render-citation.html" $citation }}
         {{ end }}
